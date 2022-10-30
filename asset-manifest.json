@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/karakterkalkulator/static/css/main.d2209834.css",
+    "main.js": "/karakterkalkulator/static/js/main.fd2043cd.js",
+    "index.html": "/karakterkalkulator/index.html",
+    "main.d2209834.css.map": "/karakterkalkulator/static/css/main.d2209834.css.map",
+    "main.fd2043cd.js.map": "/karakterkalkulator/static/js/main.fd2043cd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d2209834.css",
+    "static/js/main.fd2043cd.js"
+  ]
+}
