@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/karakterkalkulator/static/css/main.d2209834.css",
-    "main.js": "/karakterkalkulator/static/js/main.fd2043cd.js",
-    "index.html": "/karakterkalkulator/index.html",
-    "main.d2209834.css.map": "/karakterkalkulator/static/css/main.d2209834.css.map",
-    "main.fd2043cd.js.map": "/karakterkalkulator/static/js/main.fd2043cd.js.map"
+    "main.css": "/static/css/main.d2209834.css",
+    "main.js": "/static/js/main.fd2043cd.js",
+    "index.html": "/index.html",
+    "main.d2209834.css.map": "/static/css/main.d2209834.css.map",
+    "main.fd2043cd.js.map": "/static/js/main.fd2043cd.js.map"
   },
   "entrypoints": [
     "static/css/main.d2209834.css",
