@@ -13,7 +13,7 @@ export default function Course() {
         <button>E</button>
         <button>F</button>
       </div>
-      <span>Snitt:{0.0}</span>
+      <span>Snitt: {0.0}</span>
     </div>
   );
 }
