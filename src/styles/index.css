@@ -13,12 +13,3 @@ body {
 code {
   font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
 }
-
-footer {
-  background-color: #121417;
-  min-height: 20rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-}

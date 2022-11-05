@@ -15,7 +15,7 @@
   justify-content: space-evenly;
 }
 
-h3 {
+.heading {
   font-size: 1.75rem;
   text-shadow: 1px 1px rgba(194, 206, 216, 0.89);
   margin-top: 1rem;
@@ -28,7 +28,7 @@ h3 {
   justify-content: space-evenly;
 }
 
-button {
+.btn {
   font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
   width: 1.75rem;
   height: 1.75rem;
@@ -37,7 +37,7 @@ button {
   border-radius: 6px;
 }
 
-span {
+.span {
   display: block;
   font-size: 0.8rem;
   text-align: center;

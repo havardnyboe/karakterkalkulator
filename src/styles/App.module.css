@@ -19,20 +19,20 @@
   justify-content: center;
 }
 
-h1 {
+.heading {
   margin: 2rem 0 1rem 0;
   font-size: 4rem;
   text-shadow: .1em .1em black;
 }
 
 @media only screen and (max-width: 1000px) {
-  h1 {
+  .heading {
     font-size: 3rem;
   }
 }
 
 @media only screen and (max-width: 500px) {
-  h1 {
+  .heading {
     font-size: 2rem;
   }
 }

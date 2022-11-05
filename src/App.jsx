@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <div className={style.app}>
-      <h1>Karakterkalkulator</h1>
+      <h1 className={style.heading}>Karakterkalkulator</h1>
       <code>Work in progress...</code>
       <div className={style.course_container}>
         <Course code={courses[0].id} name={courses[0].name} />
