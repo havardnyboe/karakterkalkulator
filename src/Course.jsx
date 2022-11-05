@@ -1,10 +1,11 @@
 import style from "./styles/Course.module.css";
 
-export default function Course() {
+export default function Course(props) {
   return (
     <div className={style.course}>
-      <h3>Kode</h3>
-      <span>Navn</span>
+      <h3>{props.code || "KODE"}</h3>
+      <span className={style.mg0}>Poeng: {0}</span>
+      <span>{props.name || "NAVN"}</span>
       <div className={style.btn_container}>
         <button>A</button>
         <button>B</button>
