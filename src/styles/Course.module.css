@@ -1,7 +1,9 @@
+/* @import url(index.css); */
+
 .course {
   background-color: white;
   color: black;
-  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+  font-family: var(--mono);
   font-weight: 600;
   width: 16rem;
   height: 14rem;
@@ -28,14 +30,34 @@
   justify-content: space-evenly;
 }
 
-.btn {
-  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
-  width: 1.75rem;
-  height: 1.75rem;
-  background-color: lightgray;
-  background-color: rgb(229, 229, 229);
-  border-radius: 6px;
+.btn_gray {
+  --bg-color: #9a9a9a;
 }
+
+.btn_A {
+  --bg-color: #74B957;
+}
+
+.btn_B {
+  --bg-color: #396ee0;
+}
+
+.btn_C {
+  --bg-color: #6D9AD1;
+}
+
+.btn_D {
+  --bg-color: #f5f520;
+}
+
+.btn_E {
+  --bg-color: #EAA32A;
+}
+
+.btn_F {
+  --bg-color: #DA7575;
+}
+
 
 .span {
   display: block;

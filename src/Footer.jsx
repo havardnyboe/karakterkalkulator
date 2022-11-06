@@ -1,3 +1,4 @@
+import React from "react";
 import style from "./styles/Footer.module.css";
 import githubLogo from "./img/GitHub-Mark-Light-64px.png";
 
