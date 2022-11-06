@@ -36,7 +36,7 @@ export default function Course(props) {
     const index = grades[String(e.target.name)];
     console.log(index);
     setButtons((prev) => {
-      let arr = [...prev];
+      const arr = [...prev];
       for (let i = 0; i < prev.length; i++) {
         if (i === index) arr.at(i).state = true;
         else arr.at(i).state = false;
