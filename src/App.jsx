@@ -25,6 +25,7 @@ export default function App() {
       .then((res) => res.json())
       .then((json) => {
         const { norwegian_name, code, credit, average, detail } = json;
+        getCourse.current.value = "";
         setCourses((prev) => {
           const arr = [...prev];
           if (detail === "Not found.") return arr;
