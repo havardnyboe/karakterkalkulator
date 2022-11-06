@@ -8,8 +8,7 @@
   width: 16rem;
   height: 14rem;
   border-radius: 15px;
-  box-shadow: 0 8px 5px black;
-  box-shadow: black 0px 6px 0px, #d6d6e7 0 -6px 0 inset;
+  box-shadow: var(--black) 0px 6px 0px, #d6d6e7 0 -6px 0 inset;
 
   display: flex;
   flex-direction: column;
