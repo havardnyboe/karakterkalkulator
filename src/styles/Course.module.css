@@ -1,14 +1,14 @@
+/* @import url(index.css); */
+
 .course {
   background-color: white;
   color: black;
-  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+  font-family: var(--mono);
   font-weight: 600;
   width: 16rem;
   height: 14rem;
   border-radius: 15px;
-  margin: auto;
-  box-shadow: 0 8px 5px black;
-  box-shadow: black 0px 6px 0px, #d6d6e7 0 -6px 0 inset;
+  box-shadow: var(--black) 0px 6px 0px, #d6d6e7 0 -6px 0 inset;
 
   display: flex;
   flex-direction: column;
@@ -16,31 +16,76 @@
   justify-content: space-evenly;
 }
 
-h3 {
+.heading {
   font-size: 1.75rem;
   text-shadow: 1px 1px rgba(194, 206, 216, 0.89);
-  margin-top: 1rem;
+  margin-top: -.75rem;
   margin-bottom: 0.5rem;
 }
 
+.flip {
+  position: relative;
+  left: 116px;
+  background-color: inherit;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.delete {
+  position: relative;
+  top: -2px;
+  right: 120px;
+  background-color: inherit;
+  border: none;
+  font-size: .75rem;
+  cursor: pointer;
+}
+
 .btn_container {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-evenly;
 }
 
-button {
-  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
-  width: 1.75rem;
-  height: 1.75rem;
-  background-color: lightgray;
-  border-radius: 6px;
+.btn_gray {
+  --btn-color: #9a9a9a;
 }
 
-span {
+.btn_A {
+  --btn-color: #74B957;
+}
+
+.btn_B {
+  --btn-color: #396ee0;
+}
+
+.btn_C {
+  --btn-color: #6D9AD1;
+}
+
+.btn_D {
+  --btn-color: #f5f520;
+}
+
+.btn_E {
+  --btn-color: #EAA32A;
+}
+
+.btn_F {
+  --btn-color: #DA7575;
+}
+
+
+.span {
   display: block;
   font-size: 0.8rem;
   text-align: center;
   min-height: 2rem;
   margin-top: 0;
+}
+
+.mg0 {
+  margin: 0;
+  min-height: 1rem;
 }
