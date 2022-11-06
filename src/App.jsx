@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Course from "./Course";
 import style from "./styles/App.module.css";
 
+const COURSES_KEY = "YAFn!!aB3u$U7r3";
+
 export default function App() {
   const [courses, setCourses] = useState([]);
+  const getCourse = useRef();
 
-  const addCourse = (courseCode) => {
-    fetch(`https://grades.no/api/v2/courses/${courseCode.toUpperCase()}/`)
+  useEffect(() => {
+    const storedCourses = JSON.parse(localStorage.getItem(COURSES_KEY));
+    if (storedCourses) setCourses((prev) => [...prev, ...storedCourses]);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(COURSES_KEY, JSON.stringify(courses));
+  }, [courses]);
+
+  const addCourse = () => {
+    if (getCourse.current.value === "") return alert("Kan ikke være null");
+    fetch(
+      `https://grades.no/api/v2/courses/${getCourse.current.value.toUpperCase()}/`
+    )
       .then((res) => res.json())
       .then((json) => {
         const { norwegian_name, code, credit, average, detail } = json;
@@ -47,12 +62,11 @@ export default function App() {
       <code>Snitt: {0.0}</code>
       <input
         type="text"
-        id="getCourse"
+        ref={getCourse}
         placeholder="Emnekode"
         className={style.getCourse}
         onKeyDown={(e) => {
-          if (e.key === "Enter")
-            addCourse(document.querySelector("#getCourse").value);
+          if (e.key === "Enter") addCourse();
         }}
       />
       <div className={style.course_container}>
