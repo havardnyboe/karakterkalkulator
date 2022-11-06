@@ -8,6 +8,7 @@ export default function GradeButton(props) {
       className={classnames(style.btn, props.style)}
       onClick={props.onClick}
       name={props.name}
+      id={props.id}
     >
       {props.name}
     </button>

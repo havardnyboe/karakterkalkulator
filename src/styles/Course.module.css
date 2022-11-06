@@ -19,12 +19,31 @@
 .heading {
   font-size: 1.75rem;
   text-shadow: 1px 1px rgba(194, 206, 216, 0.89);
-  margin-top: 1rem;
+  margin-top: -.75rem;
   margin-bottom: 0.5rem;
 }
 
+.flip {
+  position: relative;
+  left: 116px;
+  background-color: inherit;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.delete {
+  position: relative;
+  top: -2px;
+  right: 120px;
+  background-color: inherit;
+  border: none;
+  font-size: .75rem;
+  cursor: pointer;
+}
+
 .btn_container {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-evenly;
 }

@@ -19,8 +19,21 @@
   justify-content: center;
 }
 
+.getCourse {
+  width: 270px;
+  height: 2rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 1rem;
+  border: 2px solid var(--black);
+  border-radius: 15px;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
 .heading {
-  margin: 2rem 0 1rem 0;
+  margin: 2rem 0 6rem 0;
   font-size: 4rem;
   text-shadow: .1em .1em #121417;
 }
