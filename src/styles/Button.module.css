@@ -2,7 +2,7 @@
   font-family: var(--mono);
   width: 1.75rem;
   height: 1.75rem;
-  background-color: var(--bg-color, #9a9a9a);
+  background-color: var(--btn-color, #9a9a9a);
   border-radius: 6px;
   border: 1px solid #00000042;
   cursor: pointer;

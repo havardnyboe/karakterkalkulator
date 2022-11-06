@@ -1,5 +1,5 @@
 .footer {
-  background-color: #121417;
+  background-color: var(--black);
   min-height: 15rem;
   display: flex;
   flex-direction: column;

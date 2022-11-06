@@ -2,12 +2,14 @@
 
 :root {
   --mono: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
-  --sans: "Ubuntu", -apple-system, "Helvetica Neue", sans-serif
+  --sans: "Ubuntu", -apple-system, "Helvetica Neue", sans-serif;
+  --black: #121417;
+  --bg-color: #282c34;
 }
 
 body {
   margin: 0;
-  background-color: #282c34;
+  background-color: var(--bg-color);
   color: white;
   min-height: 100vh;
   font-family: var(--sans);

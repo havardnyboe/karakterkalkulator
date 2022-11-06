@@ -31,31 +31,31 @@
 }
 
 .btn_gray {
-  --bg-color: #9a9a9a;
+  --btn-color: #9a9a9a;
 }
 
 .btn_A {
-  --bg-color: #74B957;
+  --btn-color: #74B957;
 }
 
 .btn_B {
-  --bg-color: #396ee0;
+  --btn-color: #396ee0;
 }
 
 .btn_C {
-  --bg-color: #6D9AD1;
+  --btn-color: #6D9AD1;
 }
 
 .btn_D {
-  --bg-color: #f5f520;
+  --btn-color: #f5f520;
 }
 
 .btn_E {
-  --bg-color: #EAA32A;
+  --btn-color: #EAA32A;
 }
 
 .btn_F {
-  --bg-color: #DA7575;
+  --btn-color: #DA7575;
 }
 
 
