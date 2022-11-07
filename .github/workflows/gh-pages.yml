@@ -24,5 +24,3 @@ jobs:
 
       - name: Deploy 🚀
         run: npm run deploy
-        with:
-          folder: build # The folder the action should deploy.
