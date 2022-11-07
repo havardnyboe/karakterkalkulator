@@ -59,7 +59,6 @@ export default function App() {
   return (
     <div className={style.app}>
       <h1 className={style.heading}>Karakterkalkulator</h1>
-      <code>Work in progress...</code>
       <code>Snitt: {0.0}</code>
       <input
         type="text"
