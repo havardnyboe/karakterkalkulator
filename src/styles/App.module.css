@@ -11,6 +11,7 @@
 
 .course_container {
   margin: 2rem 1rem;
+  margin-bottom: 10rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -44,20 +45,33 @@
 }
 
 .gradeContainer {
+  background-color: white;
+  box-shadow: var(--black) 0px 6px 0px, #d6d6e7 0 -6px 0 inset;
+  color: black;
+  font-family: var(--mono);
+  font-weight: 600;
+  height: 170px;
+  width: 180px;
+  border-radius: 15px;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: .75rem;
-  font-family: var(--mono);
 }
 
 .grade {
+  margin-top: -1rem;
   font-size: 3rem;
   font-weight: 900;
 }
 
 .average {
   margin-top: -1rem;
+  font-size: 1rem;
+}
+
+.credit {
   font-size: 1rem;
 }
