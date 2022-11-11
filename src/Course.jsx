@@ -1,24 +1,76 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classnames from "classnames";
 import Button from "./GradeButton";
 import style from "./styles/Course.module.css";
 
 export default function Course(props) {
   const gradeButtons = [
-    { name: "F", id: 0, style: [style.btn_F, true] },
-    { name: "E", id: 1, style: [style.btn_E, true] },
-    { name: "D", id: 2, style: [style.btn_D, true] },
-    { name: "C", id: 3, style: [style.btn_C, true] },
-    { name: "B", id: 4, style: [style.btn_B, true] },
-    { name: "A", id: 5, style: [style.btn_A, true] },
+    {
+      name: "F",
+      id: 0,
+      style: style.btn_F,
+      selected: true,
+    },
+    {
+      name: "E",
+      id: 1,
+      style: style.btn_E,
+      selected: true,
+    },
+    {
+      name: "D",
+      id: 2,
+      style: style.btn_D,
+      selected: true,
+    },
+    {
+      name: "C",
+      id: 3,
+      style: style.btn_C,
+      selected: true,
+    },
+    {
+      name: "B",
+      id: 4,
+      style: style.btn_B,
+      selected: true,
+    },
+    {
+      name: "A",
+      id: 5,
+      style: style.btn_A,
+      selected: true,
+    },
   ];
   const boolButtons = [
-    { name: "Ikke Bestått", id: 0, style: [style.btn_F, true] },
-    { name: "Bestått", id: 1, style: [style.btn_A, true] },
+    {
+      name: "Ikke Bestått",
+      id: 0,
+      style: style.btn_F,
+      selected: true,
+    },
+    {
+      name: "Bestått",
+      id: 1,
+      style: style.btn_A,
+      selected: true,
+    },
   ];
 
   const [toggleBtn, setToggleBtn] = useState(false);
   const [buttons, setButtons] = useState(gradeButtons);
+  const btnFlip = useRef(0);
+
+  useEffect(() => {
+    setButtons((prev) => {
+      [...prev].forEach((btn) => {
+        if (btn.id === Number(props.grade)) btn.selected = true;
+        else if (props.grade === null) btn.selected = true;
+        else btn.selected = false;
+      });
+      return [...prev];
+    });
+  }, [props.grade]);
 
   const grades = {
     5: "A",
@@ -40,6 +92,7 @@ export default function Course(props) {
   };
 
   const changeButtons = (e) => {
+    props.updateGrade(e, props.code, true);
     toggleBtn ? setButtons(gradeButtons) : setButtons(boolButtons);
     setToggleBtn((prev) => !prev);
     const duration = 300;
@@ -50,21 +103,19 @@ export default function Course(props) {
   };
 
   const handleButton = (e) => {
-    setButtons((prev) => {
-      let arr = [...prev];
-      arr.map((elem, i) => (elem.style[1] = false));
-      arr[e.target.id].style[1] = true;
-      return arr;
-    });
+    props.updateGrade(e, props.code);
   };
 
   return (
     <div className={style.course}>
       <div>
-        <button onClick={changeButtons} className={style.flip}>
+        <button onClick={changeButtons} className={style.flip} ref={btnFlip}>
           &#8635;
         </button>
-        <button onClick={props.delete} className={style.delete}>
+        <button
+          onClick={() => props.delete(props.code)}
+          className={style.delete}
+        >
           &#10060;
         </button>
       </div>
@@ -80,7 +131,7 @@ export default function Course(props) {
               id={button.id}
               key={button.id}
               name={button.name}
-              style={button.style[1] ? button.style[0] : ""}
+              style={button.selected ? button.style : ""}
               onClick={handleButton}
             />
           ))
