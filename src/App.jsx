@@ -23,7 +23,7 @@ export default function App() {
     let sum = 0;
     let len = 0;
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i] !== null) {
+      if (![null, "PASS", "FAIL"].includes(arr[i])) {
         sum += Number(arr[i]);
         len = i + 1;
       }

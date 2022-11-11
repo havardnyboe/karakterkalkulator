@@ -45,26 +45,29 @@ export default function Course(props) {
   const boolButtons = [
     {
       name: "Ikke Bestått",
-      id: 0,
+      id: "FAIL",
       style: style.btn_F,
       selected: true,
     },
     {
       name: "Bestått",
-      id: 1,
+      id: "PASS",
       style: style.btn_A,
       selected: true,
     },
   ];
 
   const [toggleBtn, setToggleBtn] = useState(false);
-  const [buttons, setButtons] = useState(gradeButtons);
-  const btnFlip = useRef(0);
+  const [buttons, setButtons] = useState(
+    Number(props.grade) > 0 || props.grade === null ? gradeButtons : boolButtons
+  );
+  const btnFlipRef = useRef(0);
 
   useEffect(() => {
     setButtons((prev) => {
       [...prev].forEach((btn) => {
         if (btn.id === Number(props.grade)) btn.selected = true;
+        else if (btn.id === String(props.grade)) btn.selected = true;
         else if (props.grade === null) btn.selected = true;
         else btn.selected = false;
       });
@@ -109,7 +112,7 @@ export default function Course(props) {
   return (
     <div className={style.course}>
       <div>
-        <button onClick={changeButtons} className={style.flip} ref={btnFlip}>
+        <button onClick={changeButtons} className={style.flip} ref={btnFlipRef}>
           &#8635;
         </button>
         <button
@@ -129,6 +132,7 @@ export default function Course(props) {
           .map((button) => (
             <Button
               id={button.id}
+              value={button.id}
               key={button.id}
               name={button.name}
               style={button.selected ? button.style : ""}
