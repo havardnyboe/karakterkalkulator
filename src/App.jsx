@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import Course from "./Course";
+import { grades, round } from "./grades";
 import style from "./styles/App.module.css";
 
 const COURSES_KEY = "YAFn!!aB3u$U7r3";
 
 export default function App() {
   const [courses, setCourses] = useState([]);
+  const [average, setAverage] = useState(0);
+  const [credit, setCredit] = useState(0);
   const getCourse = useRef();
 
   useEffect(() => {
@@ -15,7 +18,26 @@ export default function App() {
 
   useEffect(() => {
     localStorage.setItem(COURSES_KEY, JSON.stringify(courses));
+    setAverage(
+      sumGradesArray(
+        courses.map((course) => course.grade),
+        true
+      )
+    );
+    setCredit(sumGradesArray(courses.map((course) => course.points)));
   }, [courses]);
+
+  function sumGradesArray(arr, average = false) {
+    let sum = 0;
+    let len = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (![null, "PASS", "FAIL"].includes(arr[i])) {
+        sum += Number(arr[i]);
+        len = i + 1;
+      }
+    }
+    return average ? sum / len : sum;
+  }
 
   const addCourse = () => {
     if (getCourse.current.value === "") return alert("Kan ikke være null");
@@ -34,6 +56,7 @@ export default function App() {
             id: code,
             points: credit,
             average: average,
+            grade: null,
           };
           for (let i = 0; i < arr.length; i++) {
             if (arr[i].id === code) elem = null;
@@ -44,9 +67,7 @@ export default function App() {
       });
   };
 
-  const deleteCourse = (e) => {
-    const code =
-      e.target.parentElement.parentElement.firstChild.nextSibling.innerText;
+  const deleteCourse = (code) => {
     setCourses((prev) => {
       const arr = [...prev];
       arr.forEach((elem, i) => {
@@ -56,11 +77,28 @@ export default function App() {
     });
   };
 
+  function changeCourseGrade(e, code, reset = false) {
+    console.log(e.target);
+    setCourses((prev) => {
+      const arr = [...prev];
+      arr.forEach((course) => {
+        if (course.id === code && !reset) course.grade = e.target.id;
+        if (course.id === code && reset) course.grade = null;
+      });
+      return arr;
+    });
+  }
+
   return (
     <div className={style.app}>
       <h1 className={style.heading}>Karakterkalkulator</h1>
-      <code>Work in progress...</code>
-      <code>Snitt: {0.0}</code>
+      <div className={style.gradeContainer}>
+        <div className={style.grade}>{grades[round(average)]}</div>
+        <div className={style.average}>
+          {round(average, 2) ? "(" + round(average, 2) + ")" : ""}
+        </div>
+        <div className={style.credit}>{credit} stp</div>
+      </div>
       <input
         type="text"
         ref={getCourse}
@@ -79,9 +117,9 @@ export default function App() {
               name={course.name}
               points={course.points}
               average={course.average}
-              delete={(e) => {
-                deleteCourse(e);
-              }}
+              grade={course.grade}
+              updateGrade={changeCourseGrade}
+              delete={deleteCourse}
             />
           ))
         ) : (

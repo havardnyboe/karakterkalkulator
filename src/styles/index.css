@@ -5,6 +5,9 @@
   --sans: "Ubuntu", -apple-system, "Helvetica Neue", sans-serif;
   --black: #121417;
   --bg-color: #282c34;
+  --header-height: 15rem;
+  --footer-height: 22vh;
+  --main-height: calc(100vh - var(--footer-height));
 }
 
 body {

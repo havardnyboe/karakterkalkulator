@@ -1,6 +1,6 @@
 .app {
   max-width: 1200px;
-  min-height: 100vh;
+  min-height: var(--main-height);
   margin: auto;
   font-size: 1.25em;
   display: flex;
@@ -28,12 +28,11 @@
   font-size: 1rem;
   border: 2px solid var(--black);
   border-radius: 15px;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .heading {
-  margin: 4rem 0 6rem 0;
+  margin: 2.5rem 0 3rem 0;
   font-size: 3rem;
   text-shadow: .1em .1em #121417;
 }
@@ -42,4 +41,23 @@
   .heading {
     font-size: 2rem;
   }
+}
+
+.gradeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;
+  font-family: var(--mono);
+}
+
+.grade {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.average {
+  margin-top: -1rem;
+  font-size: 1rem;
 }
