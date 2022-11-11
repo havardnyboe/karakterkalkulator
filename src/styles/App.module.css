@@ -42,3 +42,22 @@
     font-size: 2rem;
   }
 }
+
+.gradeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;
+  font-family: var(--mono);
+}
+
+.grade {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.average {
+  margin-top: -1rem;
+  font-size: 1rem;
+}

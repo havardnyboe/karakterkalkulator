@@ -1,60 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import classnames from "classnames";
 import Button from "./GradeButton";
+import { grades, round } from "./grades";
 import style from "./styles/Course.module.css";
 
 export default function Course(props) {
   const gradeButtons = [
-    {
-      name: "F",
-      id: 0,
-      style: style.btn_F,
-      selected: true,
-    },
-    {
-      name: "E",
-      id: 1,
-      style: style.btn_E,
-      selected: true,
-    },
-    {
-      name: "D",
-      id: 2,
-      style: style.btn_D,
-      selected: true,
-    },
-    {
-      name: "C",
-      id: 3,
-      style: style.btn_C,
-      selected: true,
-    },
-    {
-      name: "B",
-      id: 4,
-      style: style.btn_B,
-      selected: true,
-    },
-    {
-      name: "A",
-      id: 5,
-      style: style.btn_A,
-      selected: true,
-    },
+    { name: "F", id: 0, style: style.btn_F, selected: true },
+    { name: "E", id: 1, style: style.btn_E, selected: true },
+    { name: "D", id: 2, style: style.btn_D, selected: true },
+    { name: "C", id: 3, style: style.btn_C, selected: true },
+    { name: "B", id: 4, style: style.btn_B, selected: true },
+    { name: "A", id: 5, style: style.btn_A, selected: true },
   ];
   const boolButtons = [
-    {
-      name: "Ikke Bestått",
-      id: "FAIL",
-      style: style.btn_F,
-      selected: true,
-    },
-    {
-      name: "Bestått",
-      id: "PASS",
-      style: style.btn_A,
-      selected: true,
-    },
+    { name: "Ikke Bestått", id: "FAIL", style: style.btn_F, selected: true },
+    { name: "Bestått", id: "PASS", style: style.btn_A, selected: true },
   ];
 
   const [toggleBtn, setToggleBtn] = useState(false);
@@ -74,25 +35,6 @@ export default function Course(props) {
       return [...prev];
     });
   }, [props.grade]);
-
-  const grades = {
-    5: "A",
-    4: "B",
-    3: "C",
-    2: "D",
-    1: "E",
-    0: "F",
-    A: 5,
-    B: 4,
-    C: 3,
-    D: 2,
-    E: 1,
-    F: 0,
-  };
-
-  const round = (int, decimals = 0) => {
-    return Math.round(int * 10 ** decimals) / 10 ** decimals;
-  };
 
   const changeButtons = (e) => {
     props.updateGrade(e, props.code, true);

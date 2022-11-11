@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Course from "./Course";
+import { grades, round } from "./grades";
 import style from "./styles/App.module.css";
 
 const COURSES_KEY = "YAFn!!aB3u$U7r3";
@@ -7,6 +8,7 @@ const COURSES_KEY = "YAFn!!aB3u$U7r3";
 export default function App() {
   const [courses, setCourses] = useState([]);
   const [average, setAverage] = useState(0);
+  const [credit, setCredit] = useState(0);
   const getCourse = useRef();
 
   useEffect(() => {
@@ -16,10 +18,16 @@ export default function App() {
 
   useEffect(() => {
     localStorage.setItem(COURSES_KEY, JSON.stringify(courses));
-    setAverage(sumArray(courses.map((course) => course.grade)));
+    setAverage(
+      sumGradesArray(
+        courses.map((course) => course.grade),
+        true
+      )
+    );
+    setCredit(sumGradesArray(courses.map((course) => course.points)));
   }, [courses]);
 
-  function sumArray(arr) {
+  function sumGradesArray(arr, average = false) {
     let sum = 0;
     let len = 0;
     for (let i = 0; i < arr.length; i++) {
@@ -28,7 +36,7 @@ export default function App() {
         len = i + 1;
       }
     }
-    return Math.round((sum / len) * 100) / 100;
+    return average ? sum / len : sum;
   }
 
   const addCourse = () => {
@@ -84,7 +92,13 @@ export default function App() {
   return (
     <div className={style.app}>
       <h1 className={style.heading}>Karakterkalkulator</h1>
-      <code>Snitt: {average}</code>
+      <div className={style.gradeContainer}>
+        <div className={style.grade}>{grades[round(average)]}</div>
+        <div className={style.average}>
+          {round(average, 2) ? "(" + round(average, 2) + ")" : ""}
+        </div>
+        <div className={style.credit}>{credit} stp</div>
+      </div>
       <input
         type="text"
         ref={getCourse}
