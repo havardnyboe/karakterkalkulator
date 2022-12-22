@@ -33,12 +33,10 @@ export default function App() {
         len++;
       }
     }
-    console.log(len);
     return sum / len;
   }
 
   function sumCreditArray(arr) {
-    console.log(arr);
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
       if (![null, "0", "FAIL"].includes(arr[i][0])) {
@@ -53,7 +51,16 @@ export default function App() {
     fetch(
       `https://grades.no/api/v2/courses/${getCourse.current.value.toUpperCase()}/`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          if (res.status === 404) {
+            alert(`Fant ikke emne ${getCourse.current.value.toUpperCase()}`);
+          } else {
+            alert(`${res.status}: ${res.statusText}}`);
+          }
+        }
+        return res.json();
+      })
       .then((json) => {
         const { norwegian_name, code, credit, average, detail } = json;
         getCourse.current.value = "";
@@ -87,7 +94,6 @@ export default function App() {
   };
 
   function changeCourseGrade(e, code, reset = false) {
-    console.log(e.target);
     setCourses((prev) => {
       const arr = [...prev];
       arr.forEach((course) => {
