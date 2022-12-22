@@ -18,25 +18,34 @@ export default function App() {
 
   useEffect(() => {
     localStorage.setItem(COURSES_KEY, JSON.stringify(courses));
-    setAverage(
-      sumGradesArray(
-        courses.map((course) => course.grade),
-        true
-      )
+    setAverage(sumGradesArray(courses.map((course) => course.grade)));
+    setCredit(
+      sumCreditArray(courses.map((course) => [course.grade, course.points]))
     );
-    setCredit(sumGradesArray(courses.map((course) => course.points)));
   }, [courses]);
 
-  function sumGradesArray(arr, average = false) {
+  function sumGradesArray(arr) {
     let sum = 0;
     let len = 0;
     for (let i = 0; i < arr.length; i++) {
       if (![null, "PASS", "FAIL"].includes(arr[i])) {
         sum += Number(arr[i]);
-        len = i + 1;
+        len++;
       }
     }
-    return average ? sum / len : sum;
+    console.log(len);
+    return sum / len;
+  }
+
+  function sumCreditArray(arr) {
+    console.log(arr);
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (![null, "0", "FAIL"].includes(arr[i][0])) {
+        sum += Number(arr[i][1]);
+      }
+    }
+    return sum;
   }
 
   const addCourse = () => {
