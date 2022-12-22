@@ -18,25 +18,32 @@ export default function App() {
 
   useEffect(() => {
     localStorage.setItem(COURSES_KEY, JSON.stringify(courses));
-    setAverage(
-      sumGradesArray(
-        courses.map((course) => course.grade),
-        true
-      )
+    setAverage(sumGradesArray(courses.map((course) => course.grade)));
+    setCredit(
+      sumCreditArray(courses.map((course) => [course.grade, course.points]))
     );
-    setCredit(sumGradesArray(courses.map((course) => course.points)));
   }, [courses]);
 
-  function sumGradesArray(arr, average = false) {
+  function sumGradesArray(arr) {
     let sum = 0;
     let len = 0;
     for (let i = 0; i < arr.length; i++) {
       if (![null, "PASS", "FAIL"].includes(arr[i])) {
         sum += Number(arr[i]);
-        len = i + 1;
+        len++;
       }
     }
-    return average ? sum / len : sum;
+    return sum / len;
+  }
+
+  function sumCreditArray(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (![null, "0", "FAIL"].includes(arr[i][0])) {
+        sum += Number(arr[i][1]);
+      }
+    }
+    return sum;
   }
 
   const addCourse = () => {
@@ -44,7 +51,16 @@ export default function App() {
     fetch(
       `https://grades.no/api/v2/courses/${getCourse.current.value.toUpperCase()}/`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          if (res.status === 404) {
+            alert(`Fant ikke emne ${getCourse.current.value.toUpperCase()}`);
+          } else {
+            alert(`${res.status}: ${res.statusText}}`);
+          }
+        }
+        return res.json();
+      })
       .then((json) => {
         const { norwegian_name, code, credit, average, detail } = json;
         getCourse.current.value = "";
@@ -78,7 +94,6 @@ export default function App() {
   };
 
   function changeCourseGrade(e, code, reset = false) {
-    console.log(e.target);
     setCourses((prev) => {
       const arr = [...prev];
       arr.forEach((course) => {

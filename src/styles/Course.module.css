@@ -1,5 +1,3 @@
-/* @import url(index.css); */
-
 .course {
   background-color: white;
   color: black;
@@ -19,7 +17,7 @@
 .heading {
   font-size: 1.75rem;
   text-shadow: 1px 1px rgba(194, 206, 216, 0.89);
-  margin-top: -.75rem;
+  margin-top: -0.75rem;
   margin-bottom: 0.5rem;
 }
 
@@ -30,6 +28,7 @@
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+  color: inherit;
 }
 
 .delete {
@@ -38,7 +37,7 @@
   right: 120px;
   background-color: inherit;
   border: none;
-  font-size: .75rem;
+  font-size: 0.75rem;
   cursor: pointer;
 }
 
@@ -53,7 +52,7 @@
 }
 
 .btn_A {
-  --btn-color: #74B957;
+  --btn-color: #74b957;
 }
 
 .btn_B {
@@ -61,7 +60,7 @@
 }
 
 .btn_C {
-  --btn-color: #6D9AD1;
+  --btn-color: #6d9ad1;
 }
 
 .btn_D {
@@ -69,20 +68,19 @@
 }
 
 .btn_E {
-  --btn-color: #EAA32A;
+  --btn-color: #eaa32a;
 }
 
 .btn_F {
-  --btn-color: #DA7575;
+  --btn-color: #da7575;
 }
-
 
 .span {
   display: block;
   font-size: 0.8rem;
   text-align: center;
   min-height: 2rem;
-  margin-top: 0;
+  margin: 0 0.5rem;
 }
 
 .mg0 {
