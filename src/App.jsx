@@ -18,7 +18,9 @@ export default function App() {
 
   useEffect(() => {
     localStorage.setItem(COURSES_KEY, JSON.stringify(courses));
-    setAverage(sumGradesArray(courses.map((course) => course.grade)));
+    setAverage(
+      sumGradesArray(courses.map((course) => [course.grade, course.points]))
+    );
     setCredit(
       sumCreditArray(courses.map((course) => [course.grade, course.points]))
     );
@@ -26,14 +28,14 @@ export default function App() {
 
   function sumGradesArray(arr) {
     let sum = 0;
-    let len = 0;
+    let credit = 0;
     for (let i = 0; i < arr.length; i++) {
-      if (![null, "PASS", "FAIL"].includes(arr[i])) {
-        sum += Number(arr[i]);
-        len++;
+      if (![null, "PASS", "FAIL"].includes(arr[i][0])) {
+        sum += Number(arr[i][0]) * Number(arr[i][1]);
+        credit += Number(arr[i][1]);
       }
     }
-    return sum / len;
+    return sum / credit;
   }
 
   function sumCreditArray(arr) {
@@ -107,6 +109,12 @@ export default function App() {
   return (
     <div className={style.app}>
       <h1 className={style.heading}>Karakterkalkulator</h1>
+      <p className={style.subText}>
+        Regn ut karaktersnitt for emner ved{" "}
+        <a className={style.link} href="https://www.ntnu.no/studier/emner">
+          NTNU
+        </a>
+      </p>
       <div className={style.gradeContainer}>
         <div className={style.grade}>{grades[round(average)]}</div>
         <div className={style.average}>
@@ -122,6 +130,12 @@ export default function App() {
         onKeyDown={(e) => {
           if (e.key === "Enter") addCourse();
         }}
+      />
+      <input
+        type="button"
+        value="Legg til emne"
+        className={style.addCourse}
+        onClick={addCourse}
       />
       <div className={style.course_container}>
         {courses.length ? (
