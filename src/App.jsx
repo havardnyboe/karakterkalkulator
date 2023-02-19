@@ -51,7 +51,7 @@ export default function App() {
   const addCourse = () => {
     if (getCourse.current.value === "") return alert("Kan ikke være null");
     fetch(
-      `http://grades.no/api/v2/courses/${getCourse.current.value.toUpperCase()}/`
+      `https://grades.no/api/v2/courses/${getCourse.current.value.toUpperCase()}/`
     )
       .then((res) => {
         if (!res.ok) {
