@@ -80,6 +80,7 @@ export default function App() {
             if (arr[i].id === code) elem = null;
           }
           if (elem) arr.push(elem);
+          else alert("Emnet finnes allerede i oversikten.");
           return arr;
         });
       });
